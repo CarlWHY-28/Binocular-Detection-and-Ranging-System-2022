@@ -1,7 +1,6 @@
 # Binocular Detection and Ranging System Intro
 
-`Binocular Detection and Ranging System` (2022), 'BDRS' for short, is a vision system for a robot. BDRS aims to detect target objects and measure the distance from the target object to the camera. The control system and hardware implementation of the robot are handled by two master's students and one doctoral student. YOLOv5 was adopted as the detection method in BDRS. Finally, the accuracy of ranging within 15cm reached 90%, and the accuracy of identifying objects reached 80%. 
-You can run the `camera.py` to see the demonstration.
+`Binocular Detection and Ranging System` (2022), 'BDRS' for short, is a vision system for a robot. BDRS aims to detect target objects and measure the distance from the target object to the camera. The control system and hardware implementation of the robot are handled by two master's students and one doctoral student. YOLOv5 was adopted as the detection method in BDRS. Finally, the accuracy of ranging within 15cm reached 90%, and the accuracy of identifying objects reached 80%. You can run the `camera.py` to see the demonstration. In the class camera, you might want to start with the `Loop` function (the main loop).
 
 Ps: I have just changed it to yolov8 and trained a new model for the demonstration because I deleted the yolov5 tool after yolov8 came out, but the code calling yolov5 is still in the comments. Considering that there may not be a camera to use, I used a pair of binocular images for training as the image source, and it should now be able to perform a basic demonstration!
 
