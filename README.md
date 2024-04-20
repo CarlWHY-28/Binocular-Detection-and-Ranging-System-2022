@@ -9,8 +9,10 @@ Ps: I have just changed it to yolov8 and trained a new model for the demonstrati
 + Checking the equipment 
     + The binocular camera was smaller than my finger because it needed to fit into the end of the execution. It therefore had a particularly poor imaging effect, the two images were not even parallel, so it was necessary to `rectify the camera`. However, the opposite was also beneficial, with the camera on the lens, `the accuracy of 3d ranging increases` as it got closer to the target.
 + Trying and practicing
-    + At that time, out of my lack of confidence in myself, I even used a ruler to measure the depth distance during the implementation of the ranging function for a while(lol), because the ranging was the horizontal and vertical displacement calculated by the depth first.
- 
+    + In the process of realizing the ranging function, there was a very serious error problem, which was caused by the `resolution change` before and after distortion correction.  After distortion correction, the resolution changed from 640*480 to approximately 451*461, so the center coordinate of the camera changed to (225.5,230.5), but the specified image was fixed at 640*480. So the coordinates used to calculate parallax and depth are enlarged by 640/451,461/480, respectively. As the pic shows, the green coordinate of the same box is enlarged, but `the parameters of the images refer to the red frame`. Therefore, I realized that the box coordinates of the identification map should be scaled down before the distance calculation.
+ ![image](https://raw.githubusercontent.com/whyBFU/Binocular-Detection-and-Ranging-System-2022/main/my_utils/imgs/p1.jpg)
+
+
 **Algorithm development**
 + Basic idea
     + The functions in BDRS cannot be realized synchronously, because it was a gradual process from rectification to detection to ranging. After considering the possible impact of image quality on detection, I decided to use rectified images for model training.
